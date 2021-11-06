@@ -36,12 +36,18 @@ const handleLtiRequest = (req, res, next, target) => {
             if (isValid) {
                 target = target || req.body.custom_target || consumer.target || 'index.html';
                 const ref = req.resources.register(userId, context, content, resource, target, {
-                    title: provider.context_title,
-                    label: provider.context_label,
+                    userId,
+                    resourceId: resource,
+                    contextId: provider.context_id,
+                    contextTitle: provider.context_title,
+                    contextLabel: provider.context_label,
                     isAdmin: provider.admin,
                     isInstructor: provider.instructor,
                     isManager: provider.manager,
-                    isMember: provider.member
+                    isMember: provider.member,
+                    isMentor: provider.mentor,
+                    isObserver: provider.observer,
+                    isStudent: provider.student
                 }, provider.outcome_service);
 
                 targetUrl = config.base + ref + '/';

@@ -3,14 +3,9 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-router.get('/token', (req, res) => {
+router.get('/info', (req, res) => {
     if(req.resources.accessable()) {
-        const token = jwt.sign({ 
-                exp: Math.floor((Date.now() + config.tokenExp) / 1000), 
-                data: req.resources.current().info
-            }, 
-            config.secret)
-        res.status(200).send({token});
+        res.status(200).send(req.resources.current().info);
     } else {
         res.status(403).send({msg: 'Required authentification with lti before'});
     }

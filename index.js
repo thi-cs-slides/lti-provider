@@ -48,6 +48,7 @@ const startApp = function() {
     app.use('/', resources, require('./routes/lti'));
     app.use('/:contentId', resources, require('./routes/outcome'));
     app.use('/:contentId', resources, require('./routes/token'));
+    app.use('/:contentId', resources, require('./routes/info'));
     app.use('/:contentId', resources, require('./routes/content'));
 
     app.listen(config.port, function () {

@@ -10,13 +10,15 @@ module.exports = (req, res, next) => {
             const id = generateId(user, context, content, resource, target);
             req.session.resources = req.session.resources || {};
             req.session.resources[id] = {
-                user, context, content, resource, target, info, outcomeData: Buffer.from(JSON.stringify(outcome), 'utf-8').toString('base64')
+                user, content, resource, target, info, outcomeData: Buffer.from(JSON.stringify(outcome), 'utf-8').toString('base64')
             }
             return id;
         }
     };
     if(contentId) {
         resources.contentId = () => contentId;
+        resources.userId = () => resources.current().user;
+        resources.content = () => resources.current().content;
         resources.accessable = () => (req.session.resources || {})[contentId] !== undefined;
         resources.current = () => (req.session.resources || {})[contentId];
         resources.outcome = () => {

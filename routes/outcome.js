@@ -9,6 +9,7 @@ router.post('/outcome', (req, res) => {
         const out = req.resources.outcome();
         out.replace(value);
         res.status(204).send();
+        debug(`Updated outcome to ${value} for ${req.resources.userId()}`);
     } catch(e) {
         debug(e);
         res.status(400).send('Could not save outcome');
