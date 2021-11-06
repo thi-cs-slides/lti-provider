@@ -20,9 +20,9 @@ lti-provider:cli   Secret = xyz789
 
 Afterwards go (for example) to Moodle and add an external tool. Use `http://localhost:4000/lti` (or public domain) as Tool URL. Enter Key and Secret. In case of accessing `other.html` use `http://localhost:4000/lti/other.html` or custom parameters with `target=other.html`.
 
-Users are then redirected to `http://localhost:4000/lti/` from Moodle and the web service generates content access for the redirection. This is mapped using a hash that is only valid in the current session, e.g. `http://localhost:4000/<accessid>/`.
-
 ![](resources/moodle.png)
+
+Users are then redirected to `http://localhost:4000/lti/` from Moodle and the web service generates content access for the redirection. This is mapped using a hash that is only valid in the current session, e.g. `http://localhost:4000/<accessid>/`.
 
 ## Token
 
