@@ -1,0 +1,23 @@
+{
+  "name": "lti-provider-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cli": "DEBUG=lti-provider:* node cli.js",
+    "start": "DEBUG=lti-provider:* node index.js"
+  },
+  "author": "Sebastian Apel <Sebastian.Apel@thi.de>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "connect-mongo": "^1.3.2",
+    "debug": "^2.6.9",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "ims-lti": "^3.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^4.10.2",
+    "yargs": "^17.2.1"
+  }
+}
