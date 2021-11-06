@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const debug = require('debug')('lti-provider:routes:outcome');
 
 router.post('/outcome', (req, res) => {
     const value = parseFloat(req.body.value);
 
-    req.resources.outcome((err, out) => {
-        if(!err) {
-            out.replace(value);
-            res.status(204).send();
-        } else {
-            res.status(400).send('Could not save outcome');
-        }
-    });
+    try {
+        const out = req.resources.outcome();
+        out.replace(value);
+        res.status(204).send();
+    } catch(e) {
+        debug(e);
+        res.status(400).send('Could not save outcome');
+    }
 });
 
 module.exports = router;

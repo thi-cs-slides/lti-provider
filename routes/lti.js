@@ -42,7 +42,7 @@ const handleLtiRequest = (req, res, next, target) => {
                     isInstructor: provider.instructor,
                     isManager: provider.manager,
                     isMember: provider.member
-                }, req.body);
+                }, provider.outcome_service);
 
                 targetUrl = config.base + ref + '/';
                 req.session.save(function (err) {
